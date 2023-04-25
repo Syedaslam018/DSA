@@ -1,0 +1,38 @@
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+     String[] a = {"ananya loves sharpener", "apple is a very healthy fruit", "this is great thanks very much"};
+     int n = a.length;
+     int ans = maxA(a,n);
+     System.out.println("Max a's at index: " + ans);
+     
+    }
+    public static int maxA(String[] a, int n)
+    {
+        int e=0;
+        int m=0;
+        for(int i=0; i<n; i++)
+        {
+            int t=0;
+            HashMap<Character,Integer> h = new HashMap<>();
+            for(int j=0; j<a[i].length(); j++)
+            {
+                if(h.get(a[i].charAt(j)) == null)
+                {
+                    h.put(a[i].charAt(j),1);
+                }
+                else
+                {
+                    h.put(a[i].charAt(j),h.get(a[i].charAt(j))+1);
+                }
+            }
+            t = h.get('a');
+            if(t >= m)
+            {
+                m=t;
+                e=i;
+            }
+        }
+        return e;
+    }
+}
